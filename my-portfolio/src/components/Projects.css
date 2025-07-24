@@ -1,0 +1,29 @@
+.projects {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 32px;
+  color: #222;
+}
+
+.projects ul {
+  margin-top: 20px;
+}
+
+.projects ul li {
+  margin-bottom: 15px;
+}
+
+.projects ul li a {
+  text-decoration: none;
+  color: #00bfff;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.projects ul li a:hover {
+  color: #005aff;
+}
