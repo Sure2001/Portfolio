@@ -64,7 +64,7 @@ function Contact() {
         transition={{ duration: 0.3 }}
       >
         <FaPhone style={iconStyle} />
-        <span>+91 63831 44939 & +91 93608 64908</span>
+        <span>+91 63831 44939</span>
       </motion.div>
 
       <motion.div

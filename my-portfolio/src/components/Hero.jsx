@@ -1,23 +1,30 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-function HeroButton({ href, text }) {
+function HeroButton({ href, text, primary }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonStyle = {
-    backgroundColor: isHovered ? '#005ce6' : '#0077ff',
-    color: 'white',
-    padding: '12px 24px',
-    borderRadius: '8px',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    transition: 'all 0.3s ease-in-out',
-    transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-    boxShadow: isHovered
-      ? '0 8px 20px rgba(0, 119, 255, 0.4)'
-      : '0 4px 10px rgba(0, 0, 0, 0.1)',
-    cursor: 'pointer',
-    display: 'inline-block',
+    backgroundColor: primary
+      ? isHovered
+        ? "#005ce6"
+        : "#0077ff"
+      : "transparent",
+    color: primary ? "white" : isHovered ? "#0077ff" : "#333",
+    border: primary ? "none" : "2px solid #0077ff",
+    padding: "12px 28px",
+    borderRadius: "10px",
+    textDecoration: "none",
+    fontWeight: "600",
+    transition: "all 0.3s ease-in-out",
+    transform: isHovered ? "scale(1.05)" : "scale(1)",
+    boxShadow: primary
+      ? isHovered
+        ? "0 10px 25px rgba(0, 119, 255, 0.5)"
+        : "0 6px 15px rgba(0, 0, 0, 0.1)"
+      : "none",
+    cursor: "pointer",
+    display: "inline-block",
   };
 
   return (
@@ -34,72 +41,103 @@ function HeroButton({ href, text }) {
 
 function Hero() {
   const sectionStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '100px 20px',
-     background: 'linear-gradient(135deg, #f8f9fa, #e0eafc)',
-    textAlign: 'center',
-    flexWrap: 'wrap',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "120px 20px",
+    background:
+      "linear-gradient(135deg, #f0f4ff, #e6e9f0, #ffffff)",
+    textAlign: "center",
+    flexWrap: "wrap",
+    minHeight: "100vh",
   };
 
   const textContainer = {
-    maxWidth: '700px',
-    color: '#1e1e2f',
+    maxWidth: "800px",
+    color: "#1e1e2f",
   };
 
   const headingStyle = {
-    fontSize: '2.8rem',
-    marginBottom: '10px',
+    fontSize: "3.2rem",
+    marginBottom: "15px",
+    fontWeight: "700",
+    lineHeight: "1.2",
   };
 
-  const subheadingStyle = {
-    fontSize: '1.5rem',
-    color: '#555',
-    marginBottom: '20px',
+  const highlightName = {
+    color: "#0077ff",
+    fontWeight: "bold",
+  };
+
+  const badgeContainer = {
+    display: "flex",
+    gap: "12px",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    marginBottom: "25px",
+  };
+
+  const badgeStyle = {
+    backgroundColor: "#e6f0ff",
+    color: "#0077ff",
+    padding: "6px 14px",
+    borderRadius: "20px",
+    fontSize: "0.9rem",
+    fontWeight: "500",
   };
 
   const paragraphStyle = {
-    fontSize: '1rem',
-    lineHeight: '1.7',
-    marginBottom: '15px',
-    color: '#444',
+    fontSize: "1.1rem",
+    lineHeight: "1.7",
+    marginBottom: "15px",
+    color: "#444",
   };
 
   const buttonContainer = {
-    marginTop: '25px',
-    display: 'flex',
-    gap: '20px',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+    marginTop: "30px",
+    display: "flex",
+    gap: "20px",
+    justifyContent: "center",
+    flexWrap: "wrap",
   };
 
   return (
     <section id="hero" style={sectionStyle}>
       <motion.div
         style={textContainer}
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
         <h1 style={headingStyle}>
-          Hi, I’m <span style={{ color: '#ff0000ff' }}>SURENDHAR K</span>
+          Hi, I’m <span style={highlightName}>SURENDHAR K</span>
         </h1>
-        <h3 style={subheadingStyle}>
-          Full-Stack Developer | MERN & MEAN Stack Expert
-        </h3>
+
+        {/* Role Badges */}
+        <div style={badgeContainer}>
+          <span style={badgeStyle}>Full-Stack Developer</span>
+          <span style={badgeStyle}>MERN Stack</span>
+          <span style={badgeStyle}>MEAN Stack</span>
+        </div>
+
+        {/* About */}
         <p style={paragraphStyle}>
-          I build modern, secure, and scalable web applications using the MERN and MEAN stacks.
+          I specialize in building secure, scalable, and modern web
+          applications with the MERN & MEAN stacks.
         </p>
         <p style={paragraphStyle}>
-          I enjoy solving problems with code and crafting seamless digital experiences.
+          Passionate about solving real-world problems with clean code and
+          creative solutions.
         </p>
         <p style={paragraphStyle}>
-          Always learning, always building — let’s create something great together.
+          Always learning, always innovating — let’s build something great
+          together 🚀
         </p>
+
+        {/* Buttons */}
         <div style={buttonContainer}>
-          <HeroButton href="/SURENDHAR-REACT.pdf" text="📄 Download CV" />
-         
+          <HeroButton href="/SURENDHAR-REACT.pdf" text="📄 Download CV" primary />
+          <HeroButton href="#contact" text="✉️ Contact Me" />
         </div>
       </motion.div>
     </section>

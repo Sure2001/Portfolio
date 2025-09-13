@@ -1,100 +1,121 @@
 function Projects() {
   const sectionStyle = {
-    padding: '60px 20px',
-     background: 'linear-gradient(135deg, #f8f9fa, #e0eafc)',
-    textAlign: 'center',
-    minHeight: '50vh',
+    padding: "80px 20px",
+    background: "linear-gradient(135deg, #fdfbfb, #e3f2fd)", // light gradient
+    fontFamily: "Arial, sans-serif",
+    minHeight: "100vh",
   };
 
   const headingStyle = {
-    fontSize: '3rem',
-    fontWeight: '700',
-    marginBottom: '40px',
-    color: '#ff0000ff',
+    fontSize: "3rem",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: "50px",
+    color: "#1976d2", // blue
   };
 
-  const listStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '30px',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: 0,
-    listStyle: 'none',
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "30px",
+    maxWidth: "1100px",
+    margin: "0 auto",
   };
 
-  const itemBaseStyle = {
-    background: 'linear-gradient(145deg, #ffffff, #e6e6e6)',
-    borderRadius: '16px',
-    padding: '30px',
-    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
-    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-    cursor: 'pointer',
-    transform: 'scale(1)',
+  const cardStyle = {
+    background: "#ffffffcc", // soft white
+    borderRadius: "20px",
+    padding: "25px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+    backdropFilter: "blur(6px)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
   };
 
-  const itemHoverStyle = {
-    transform: 'scale(1.05)',
-    boxShadow: '0 12px 30px rgba(0, 0, 0, 0.2)',
+  const titleStyle = {
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    marginBottom: "12px",
+    color: "#ef6c00",
+    textDecoration: "none",
   };
 
-  const linkStyle = {
-    textDecoration: 'none',
-    fontSize: '1.4rem',
-    fontWeight: '600',
-    color: '#0077cc',
+  const techContainer = {
+    marginTop: "15px",
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "10px",
   };
 
-  const techStyle = {
-    marginTop: '10px',
-    fontSize: '1rem',
-    color: '#555',
+  const techTag = {
+    padding: "6px 14px",
+    background: "linear-gradient(135deg, #42a5f5, #81c784)", // blue-green tags
+    color: "#fff",
+    borderRadius: "20px",
+    fontSize: "0.85rem",
+    fontWeight: "500",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
   };
 
   const projects = [
     {
-      title: '🌐 Dgital Website',
-      url: 'https://dgitalweb.netlify.app',
-      tech: 'HTML, CSS, Bootstrap 5',
+      title: "🌐 Digital Website",
+      url: "https://dgitalweb.netlify.app",
+      tech: ["HTML", "CSS", "Bootstrap 5"],
     },
     {
-      title: '💻 Online Skill Course Website',
-      url: 'https://online-skill-course.netlify.app',
-      tech: 'React, JavaScript, Node.js, MongoDB',
+      title: "💻 Online Skill Course Website",
+      url: "https://online-skill-course.netlify.app",
+      tech: ["React", "JavaScript", "Node.js", "MongoDB"],
     },
     {
-      title: '🎮 Lugx Gaming Website',
-      url: 'https://lugx-gaming-anglar.netlify.app',
-      tech: 'Angular 14, TypeScript, Express, MongoDB',
+      title: "🎮 Lugx Gaming Website",
+      url: "https://lugx-gaming-anglar.netlify.app",
+      tech: ["Angular 14", "TypeScript", "Express", "MongoDB"],
+    },
+    {
+      title: "👨‍💼 Employee Master Screen",
+      url: "https://employee-master-screen.netlify.app",
+      tech: ["Angular 14", "TypeScript", "Express", "MongoDB"],
     },
   ];
 
-  const handleMouseEnter = (e) => {
-    Object.assign(e.currentTarget.style, itemHoverStyle);
-  };
-
-  const handleMouseLeave = (e) => {
-    Object.assign(e.currentTarget.style, itemBaseStyle);
-  };
-
   return (
     <section id="projects" style={sectionStyle}>
-      <h2 style={headingStyle}>🚀 MY PROJECTS</h2>
-      <ul style={listStyle}>
+      <h2 style={headingStyle}>🚀 My Projects</h2>
+      <div style={gridStyle}>
         {projects.map((project, index) => (
-          <li
+          <div
             key={index}
-            style={{ ...itemBaseStyle }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            style={cardStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow =
+                "0 12px 24px rgba(0,0,0,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 8px 20px rgba(0,0,0,0.1)";
+            }}
           >
-            <a href={project.url} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={titleStyle}
+            >
               {project.title}
             </a>
-            <p style={techStyle}>{project.tech}</p>
-          </li>
+            <div style={techContainer}>
+              {project.tech.map((t, i) => (
+                <span key={i} style={techTag}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
