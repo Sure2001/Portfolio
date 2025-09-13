@@ -136,7 +136,7 @@ function Hero() {
 
         {/* Buttons */}
         <div style={buttonContainer}>
-          <HeroButton href="/SURENDHAR-REACT.pdf" text="📄 Download CV" primary />
+          <HeroButton href="/surendhar-Resume.pdf" text="📄 Download CV" primary />
           <HeroButton href="#contact" text="✉️ Contact Me" />
         </div>
       </motion.div>
