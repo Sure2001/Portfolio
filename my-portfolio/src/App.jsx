@@ -10,14 +10,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
     </>
   );
 }
 
 export default App;
-
